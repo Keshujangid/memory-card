@@ -12,6 +12,9 @@ export default function Card({ score, highScore, setScore, setHighScore }) {
   };
 
   const finishGame = () => {
+    if (highScore < score) {
+      setHighScore(score);
+    }
     setScore(0);
     setClicked([]);
   };
@@ -25,9 +28,7 @@ export default function Card({ score, highScore, setScore, setHighScore }) {
       }
     } else {
       console.log("2-clicked");
-      if (highScore < score) {
-        setHighScore(score);
-      }
+      
       finishGame();
     }
     setData(shuffleArray(data));
